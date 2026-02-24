@@ -1,16 +1,26 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>UID Test</title>
-</head>
-<body>
-  <h1>あなたのLINE UIDはこれです：</h1>
-  <div id="uid">まだ取得していません</div>
+<script>
+  // ① LIFFを初期化
+  liff
+    .init({
+      liffId: "2009209640-DBHYTQB9"
+    })
+    .then(() => {
+      // ② ログインしてなければログインへ誘導
+      if (!liff.isLoggedIn()) {
+        liff.login();
+        return;
+      }
 
-  <script>
-    // あとでLINEの処理を書き込む場所
-    document.getElementById('uid').innerText = 'テスト表示：JavaScript動いてる';
-  </script>
-</body>
-</html>
+      // ③ ログイン済みならプロフィール取得
+      return liff.getProfile();
+    })
+    .then((profile) => {
+      if (!profile) return;
+      // ④ userId をページに表示
+      document.getElementById("uid").innerText = profile.userId;
+    })
+    .catch((err) => {
+      console.error("LIFF エラー:", err);
+      document.getElementById("uid").innerText = "エラー発生: " + err;
+    });
+</script>
