@@ -12,6 +12,30 @@
   <p>この文字が見えていれば、LIFF SDKの読み込み前までは正常。</p>
 
   <div id="uid">ここにUIDが出る予定</div>
+    <script>
+    document.getElementById("uid").innerText = "JSはここまでは動いている";
 
+    liff
+      .init({
+        liffId: "2009209640-DBHYTQB9"
+      })
+      .then(() => {
+        if (!liff.isLoggedIn()) {
+          liff.login();
+          return;
+        }
+        return liff.getProfile();
+      })
+      .then(profile => {
+        if (!profile) return;
+        document.getElementById("uid").innerText = profile.userId;
+      })
+      .catch(err => {
+        console.error("LIFFエラー:", err);
+        document.getElementById("uid").innerText =
+          "エラー: " + err;
+      });
+  </script>
 </body>
 </html>
+
