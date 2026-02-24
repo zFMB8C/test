@@ -8,13 +8,11 @@
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 <body>
-  <h1>LIFFテスト画面</h1>
-  <p>この文字が見えていれば、LIFF SDKの読み込み前までは正常。</p>
+  <h1>LINE連携テスト</h1>
+  <p>あなたのLINE UIDは以下の通りです:</p>
 
-  <div id="uid">ここにUIDが出る予定</div>
+  <div id="uid">読み込み中...</div>
     <script>
-    document.getElementById("uid").innerText = "JSはここまでは動いている";
-
     liff
       .init({
         liffId: "2009209640-DBHYTQB9"
