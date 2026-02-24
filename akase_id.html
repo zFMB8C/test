@@ -1,26 +1,11 @@
-<script>
-  // ① LIFFを初期化
-  liff
-    .init({
-      liffId: "2009209640-DBHYTQB9"
-    })
-    .then(() => {
-      // ② ログインしてなければログインへ誘導
-      if (!liff.isLoggedIn()) {
-        liff.login();
-        return;
-      }
-
-      // ③ ログイン済みならプロフィール取得
-      return liff.getProfile();
-    })
-    .then((profile) => {
-      if (!profile) return;
-      // ④ userId をページに表示
-      document.getElementById("uid").innerText = profile.userId;
-    })
-    .catch((err) => {
-      console.error("LIFF エラー:", err);
-      document.getElementById("uid").innerText = "エラー発生: " + err;
-    });
-</script>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>テストページ</title>
+</head>
+<body>
+  <h1>GitHub Pages テスト</h1>
+  <p>この文字が見えたら、HTMLはちゃんと配信されている。</p>
+</body>
+</html>
